@@ -19,7 +19,7 @@ export default function ({store, redirect, app: { $axios }})  {
   $axios.interceptors.request.use(config => {
 		if (config.method === "post") {
       // 序列化
-      config.data = qs.stringify(config.data);
+      // config.data = qs.stringify(config.data);
       // config.data = JSON.stringify(config.data);
     }
 		return config

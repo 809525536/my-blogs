@@ -20,7 +20,8 @@ module.exports = {
     ]
   },
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    'mavon-editor/dist/css/index.css'
   ],
   plugins: [
     // ssr: true表示这个插件只在服务端起作用
@@ -28,7 +29,8 @@ module.exports = {
     '~/plugins/axios',
     { src: '~/plugins/login', ssr: false },
     { src: '~/plugins/userInfo', ssr: false },
-    { src: '~/plugins/updateInfo', ssr: false }
+    { src: '~/plugins/updateInfo', ssr: false },
+    { src: '~/plugins/mavon-editor', ssr: false}
   ],
 
   modules: [

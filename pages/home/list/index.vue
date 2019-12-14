@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="essay-list">
-      <li v-for="(item,index) in essayList" :key="index">
+      <li v-for="(item,index) in essayList" :key="index" @click="goContent(item)">
         
         <div class="title">
           {{item.title}}
@@ -52,6 +52,11 @@ export default {
         form.append("file", file);
         console.log(form)
         const res = await this.$axios.post('upload',form)
+    },
+    goContent(val) {
+      this.$router.push({
+        path: `content/${val.id}`
+      })
     }
   }
 }
