@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div v-if="!info" >
+      <div v-if="!isLogin" >
           <el-button type="text" @click="login">登陆</el-button>
           <el-button type="text" @click="signin">注册</el-button>
       </div>
@@ -35,7 +35,8 @@ export default {
       isShowUpdate: false,
       info: {},
       isShowLogin: false,
-      type: 'login'
+      type: 'login',
+      isLogin: false
     }
   },
   async mounted() {
@@ -44,6 +45,9 @@ export default {
       if(res.errCode == 2000) {
         this.info = res.data
         this.$store.commit('user/userInfo', res.data)
+        this.isLogin = true
+      }else {
+        this.isLogin = false
       }
       
       console.log(res)
