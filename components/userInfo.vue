@@ -106,6 +106,7 @@ export default {
     overflow: hidden;
     vertical-align: middle;
     margin-right: 20px;
+    cursor: pointer;
   }
   .user-name {
     display: inline-block;

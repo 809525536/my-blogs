@@ -36,11 +36,20 @@
       },
       async submit() {
         try {
+          if(this.title == '' || this.value == '') {
+            this.$message.error('请填写标题及文章内容');
+            return
+          }
           const res = await this.$axios.post('createEssay',{
             content: this.value,
             title: this.title
           })
-          console.log(res)
+          if(res.errCode == 2000) {
+            const { id } = res.data
+            this.$router.push({
+              path: `/home/content/${id}`
+            })
+          }
         } catch(err) {
           console.log(err)
         }

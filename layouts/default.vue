@@ -4,7 +4,7 @@
       <el-header class="header">
         <div class="header-container">
           <div class="left">
-            <span class="home-name">My-Blogs</span>
+            <router-link class="home-name" :to="{path: '/home/list'}">My-Blogs</router-link>
           </div>
           <div class="right">
             <user-info></user-info>
@@ -13,7 +13,7 @@
       </el-header>
       <el-container class="main-container">
         <el-main class="main-box"><nuxt/></el-main>
-        <el-aside class="nav" width="200px">Aside</el-aside>
+        <el-aside class="nav" width="200px">还没想好放啥(●ˇ∀ˇ●)</el-aside>
       </el-container>
     </el-container>
     

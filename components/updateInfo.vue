@@ -1,12 +1,12 @@
 <template>
   <div>
     <el-dialog title="修改信息" :visible.sync="dialogFormVisible" width="300px" @close="close">
-      <el-form ref="form" :model="form" label-width="40px">
+      <el-form ref="form" :model="forms" label-width="40px">
         <el-form-item label="账号">
-          <el-input v-model="form.account" placeholder="账号" disabled></el-input>
+          <el-input v-model="forms.account" placeholder="账号" disabled></el-input>
         </el-form-item>
         <el-form-item label="昵称">
-          <el-input v-model="form.name" placeholder="昵称"></el-input>
+          <el-input v-model="forms.name" placeholder="昵称"></el-input>
         </el-form-item>
         <el-form-item label="头像">
            <el-upload
@@ -36,7 +36,7 @@ export default {
     return {
       dialogFormVisible: false,
       imageUrl: '',
-      form: {
+      forms: {
         name: '',
         account: ''
       }
@@ -48,19 +48,25 @@ export default {
     }
   },
   props: {
-    userInfo: {},
     isShow: false
   },
   watch: {
-    userInfo(val) {
-      if(val) {
-        this.form = val
-        this.imageUrl = val.img
-      }
-    },
     isShow(val) {
+      if(val) {
+        const {
+          name,
+          account,
+          img
+        } = this.user
+        this.forms.name = name
+        this.forms.account = account
+        this.imageUrl = img
+      }
       this.dialogFormVisible = val
     }
+  },
+  mounted() {
+    // console.log(this.user.name)
   },
   methods: {
     upSuccess(res) {
@@ -75,9 +81,12 @@ export default {
     async submit() {
       try {
         const res = await this.$axios.post('updateInfo',{
-          ...this.form,
+          ...this.forms,
           img: this.imageUrl
         })
+        if(res.errCode == 2000) {
+          location.reload()
+        }
         console.log(res)
       }catch(err) {
 
