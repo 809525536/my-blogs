@@ -118,4 +118,7 @@ export default {
     width: 100%;
     color: #fff;
   }
+  /deep/.el-dialog__body {
+    padding-top: 0;
+  }
 </style>

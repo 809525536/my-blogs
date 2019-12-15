@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    asdfasdf
+    首页
   </section>
 </template>
 
