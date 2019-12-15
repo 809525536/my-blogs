@@ -36,8 +36,10 @@
 
       }
       const res = await _this.$axios.get('getMyEssay')
+      const { data } = res
+      const { list } = data
       return {
-        essayList: res.data.list
+        essayList: list
       }
       console.log(res)
     },
