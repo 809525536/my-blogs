@@ -21,7 +21,8 @@ module.exports = {
   },
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    'mavon-editor/dist/css/index.css'
+    'mavon-editor/dist/css/index.css',
+    'highlight.js/styles/monokai-sublime.css'
   ],
   plugins: [
     // ssr: true表示这个插件只在服务端起作用

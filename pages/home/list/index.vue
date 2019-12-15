@@ -66,7 +66,7 @@ export default {
   .essay-list {
     li {
       border-bottom: 1px solid #ccc;
-      padding: 10px;
+      padding: 20px;
       cursor: pointer;
       &>div {
         margin-bottom: 8px;

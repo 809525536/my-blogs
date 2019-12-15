@@ -4,7 +4,7 @@
       <el-header class="header">
         <div class="header-container">
           <div class="left">
-            <span>my-blogs</span>
+            <span class="home-name">My-Blogs</span>
           </div>
           <div class="right">
             <user-info></user-info>
@@ -68,12 +68,18 @@
 .main-box {
   background: #fff;
   padding: 0;
+  height: 100%;
   overflow-y: auto;
 }
 .nav {
   background: #fff;
   width: 200px;
   margin-left: 20px;
+}
+.home-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #409EFF;
 }
 </style>
 

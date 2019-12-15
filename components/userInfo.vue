@@ -5,8 +5,14 @@
           <el-button type="text" @click="signin">注册</el-button>
       </div>
     <div v-else>
-      <span class="user-img" @click="showUpdate"><img :src="info.img"></span>
-      <span class="user-name">{{info.name}}</span>
+      
+      <el-dropdown @command="handleCommand">
+        <span class="user-img"><img :src="info.img"></span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="myHome"><i class="el-icon-tickets"></i>我的主页</el-dropdown-item>
+          <el-dropdown-item command="setting"><i class="el-icon-setting"></i>设 置</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
       <el-button type="text" @click="addEssay">写文章</el-button>
       <update-info
         :isShow="isShowUpdate"
@@ -35,7 +41,11 @@ export default {
   async mounted() {
     try {
       const res = await this.$axios.get('getUserInfo')
-      this.info = res.data
+      if(res.errCode == 2000) {
+        this.info = res.data
+        this.$store.commit('user/userInfo', res.data)
+      }
+      
       console.log(res)
     } catch(err) {
 
@@ -62,8 +72,18 @@ export default {
     },
     addEssay() {
       this.$router.push({
-        path: 'editor'
+        path: '/home/editor'
       })
+    },
+    handleCommand(command) {
+      console.log(command)
+      if(command == 'setting') {
+        this.showUpdate()
+      } else if(command == 'myHome') {
+        this.$router.push({
+          path: `/home/my-list`
+        })
+      }
     }
   }
 }
@@ -80,6 +100,7 @@ export default {
     border-radius: 50%;
     overflow: hidden;
     vertical-align: middle;
+    margin-right: 20px;
   }
   .user-name {
     display: inline-block;

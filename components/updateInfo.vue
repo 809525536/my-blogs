@@ -3,7 +3,7 @@
     <el-dialog title="修改信息" :visible.sync="dialogFormVisible" width="300px" @close="close">
       <el-form ref="form" :model="form" label-width="40px">
         <el-form-item label="账号">
-          <el-input v-model="form.account" placeholder="账号"></el-input>
+          <el-input v-model="form.account" placeholder="账号" disabled></el-input>
         </el-form-item>
         <el-form-item label="昵称">
           <el-input v-model="form.name" placeholder="昵称"></el-input>
@@ -13,7 +13,6 @@
               class="upload-demo"
               action="http://47.105.139.85/upload"
               :with-credentials= true
-              :data="form"
               :on-success="upSuccess"
               
             >
@@ -22,8 +21,11 @@
             
             </el-upload>
         </el-form-item>
+        <el-form-item>
+          <el-button @click="submit" type="primary" size="mini">保 存</el-button>
+          <el-button size="mini" @click="close">取 消</el-button>
+        </el-form-item>
       </el-form>
-        
   </el-dialog>
   </div>
 </template>
@@ -36,8 +38,7 @@ export default {
       imageUrl: '',
       form: {
         name: '',
-        account: '',
-        passwd: ''
+        account: ''
       }
     }
   },
@@ -65,6 +66,17 @@ export default {
     },
     close() {
       this.$emit('close')
+    },
+    async submit() {
+      try {
+        const res = await this.$axios.post('updateInfo',{
+          ...this.form,
+          img: this.imageUrl
+        })
+        console.log(res)
+      }catch(err) {
+
+      }
     }
   }
 }
@@ -93,5 +105,8 @@ export default {
     width: 80px;
     height: 80px;
     display: block;
+  }
+  /deep/.el-dialog__body {
+    padding-top: 0;
   }
 </style>

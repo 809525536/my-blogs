@@ -8,8 +8,8 @@
         v-model="value"
         ref=md @imgAdd="imgAdd"
       />
-      <div>
-        <el-button @click="submit">保存</el-button>
+      <div class="submit">
+        <el-button @click="submit" type="primary">发 布</el-button>
       </div>
   </div>
 </template>
@@ -58,5 +58,9 @@
   }
   .title {
     margin-bottom: 20px;
+  }
+  .submit {
+    text-align: center;
+    margin-top: 20px;
   }
 </style>
