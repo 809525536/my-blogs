@@ -14,12 +14,13 @@
         </el-dropdown-menu>
       </el-dropdown>
       <el-button type="text" @click="addEssay">写文章</el-button>
-      <update-info
+      
+    </div>
+    <update-info
         :isShow="isShowUpdate"
         :userInfo="info"
         @close="closeUpdate"
       ></update-info>
-    </div>
     <login-dialog
       :isShow="isShowLogin"
       :type="type"
