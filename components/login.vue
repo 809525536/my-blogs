@@ -104,6 +104,12 @@ export default {
         console.log(res)
         if(res.errCode == 2000) {
           location.reload()
+        }else if(res.errCode == 2300) {
+          this.$message.error('账号错误');
+        }else if(res.errCode == 2400) {
+          this.$message.error('密码错误');
+        } else {
+          this.$message.error('登陆失败');
         }
       }catch(err) {
         console.log(err)
