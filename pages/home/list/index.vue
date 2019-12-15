@@ -8,7 +8,7 @@
         </div>
         <div class="info">
             <span class="nuth-name">作者: {{item.authName}}</span>
-          <span class="read-num">阅读数: {{item.readNum}}</span>
+          <span class="read-num">阅读量: {{item.readNum}}</span>
           <span class="time">发布于: {{formatDate(item.createTime)}}</span>
         </div>
       </li>
