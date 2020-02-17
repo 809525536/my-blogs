@@ -5,7 +5,7 @@ export default function({ store, redirect, app: { $axios } }) {
   const env = process.env.NODE_ENV;
   // 数据访问前缀
   $axios.defaults.baseURL =
-    env == "development" ? "http://localhost/" : "http://39.99.186.35/";
+    env == "development" ? "http://localhost/" : "http://39.99.186.35:8088/";
 
   $axios.defaults.withCredentials = true;
 
