@@ -30,23 +30,30 @@
 
 <script>
   export default {
-    async asyncData(context) {
-      const _this = context
-      let parms = {
+    // async asyncData(context) {
+    //   const _this = context
+    //   let parms = {
 
-      }
-      const res = await _this.$axios.get('getMyEssay')
-      const { data } = res
-      const { list } = data
-      return {
-        essayList: list
-      }
-      console.log(res)
-    },
+    //   }
+    //   const res = await _this.$axios.get('getMyEssay')
+    //   const { data } = res
+    //   const { list } = data
+    //   return {
+    //     essayList: list
+    //   }
+    //   console.log(res)
+    // },
     data() {
       return {
         essayList: []
       }
+    },
+    async mounted() {
+      const res = await this.$axios.get('getMyEssay')
+      const { data } = res
+      const { list } = data
+      this.essayList = list
+      console.log(res)
     },
     computed: {
       user () { return this.$store.state.user.info }
