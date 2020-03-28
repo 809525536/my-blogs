@@ -31,7 +31,8 @@ module.exports = {
     { src: '~/plugins/login', ssr: false },
     { src: '~/plugins/userInfo', ssr: false },
     { src: '~/plugins/updateInfo', ssr: false },
-    { src: '~/plugins/mavon-editor', ssr: false}
+    { src: '~/plugins/mavon-editor', ssr: false},
+    { src: '~/plugins/info', ssr: false },
   ],
 
   modules: [

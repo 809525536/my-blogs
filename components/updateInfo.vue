@@ -9,91 +9,87 @@
           <el-input v-model="forms.name" placeholder="昵称"></el-input>
         </el-form-item>
         <el-form-item label="头像">
-           <el-upload
-              class="upload-demo"
-              action="http://47.105.139.85/upload"
-              :with-credentials= true
-              :on-success="upSuccess"
-              
-            >
-              <img v-if="imageUrl" :src="imageUrl" class="avatar">
-              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            
-            </el-upload>
+          <el-upload class="upload-demo" action="http://39.99.186.35:8088/upload" :with-credentials=true
+            :on-success="upSuccess">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+
+          </el-upload>
         </el-form-item>
         <el-form-item>
           <el-button @click="submit" type="primary" size="mini">保 存</el-button>
           <el-button size="mini" @click="close">取 消</el-button>
         </el-form-item>
       </el-form>
-  </el-dialog>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      dialogFormVisible: false,
-      imageUrl: '',
-      forms: {
-        name: '',
-        account: ''
+  export default {
+    data() {
+      return {
+        dialogFormVisible: false,
+        imageUrl: '',
+        forms: {
+          name: '',
+          account: ''
+        }
       }
-    }
-  },
-  computed: {
-    user () {
-      return this.$store.state.user.info 
-    }
-  },
-  props: {
-    isShow: false
-  },
-  watch: {
-    isShow(val) {
-      if(val) {
-        const {
-          name,
-          account,
-          img
-        } = this.user
-        this.forms.name = name
-        this.forms.account = account
-        this.imageUrl = img
-      }
-      this.dialogFormVisible = val
-    }
-  },
-  mounted() {
-    // console.log(this.user.name)
-  },
-  methods: {
-    upSuccess(res) {
-      if(res.code === 2000) {
-        this.imageUrl = res.data.url
-      }
-      console.log(res)
     },
-    close() {
-      this.$emit('close')
+    computed: {
+      user() {
+        return this.$store.state.user.info
+      }
     },
-    async submit() {
-      try {
-        const res = await this.$axios.post('updateInfo',{
-          ...this.forms,
-          img: this.imageUrl
-        })
-        if(res.errCode == 2000) {
-          location.reload()
+    props: {
+      isShow: false
+    },
+    watch: {
+      isShow(val) {
+        if (val) {
+          const {
+            name,
+            account,
+            img
+          } = this.user
+          this.forms.name = name
+          this.forms.account = account
+          this.imageUrl = img
+        }
+        this.dialogFormVisible = val
+      }
+    },
+    mounted() {
+      // console.log(this.user.name)
+    },
+    methods: {
+      upSuccess(res) {
+        if (res.code === 2000) {
+          this.imageUrl = res.data.url
         }
         console.log(res)
-      }catch(err) {
+      },
+      close() {
+        this.$emit('close')
+      },
+      async submit() {
+        try {
+          const res = await this.$axios.post('updateInfo', {
+            ...this.forms,
+            img: this.imageUrl
+          })
+          if (res.errCode == 2000) {
+            location.reload()
+          }
+          console.log(res)
+        } catch (err) {
 
+        }
       }
     }
   }
-}
+
 </script>
 
 <style lang="less" scoped>
@@ -104,9 +100,11 @@ export default {
     position: relative;
     overflow: hidden;
   }
+
   .upload-demo .el-upload:hover {
     border-color: #409EFF;
   }
+
   .avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;
@@ -115,12 +113,15 @@ export default {
     line-height: 80px;
     text-align: center;
   }
+
   .avatar {
     width: 80px;
     height: 80px;
     display: block;
   }
+
   /deep/.el-dialog__body {
     padding-top: 0;
   }
+
 </style>

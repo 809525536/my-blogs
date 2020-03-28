@@ -13,7 +13,9 @@
       </el-header>
       <el-container class="main-container">
         <el-main class="main-box"><nuxt/></el-main>
-        <el-aside class="nav" width="200px">还没想好放啥(●ˇ∀ˇ●)</el-aside>
+        <el-aside class="nav" width="200px">
+          <info></info>
+        </el-aside>
       </el-container>
     </el-container>
     
