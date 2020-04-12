@@ -100,6 +100,11 @@ export default {
       console.log(this.comment);
       const essayId = this.$route.params.id;
       const { id, img, account, name } = this.$store.state.user.info;
+      console.log(id);
+      if (!id) {
+        this.$message.error("请登录后再发表评论哦~");
+        return;
+      }
       if (!this.comment) {
         this.$message.error("您还没有写评论哦");
         return;
