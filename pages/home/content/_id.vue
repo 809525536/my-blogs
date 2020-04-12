@@ -97,7 +97,6 @@ export default {
   async mounted() {},
   methods: {
     async submit() {
-      console.log(this.comment);
       const essayId = this.$route.params.id;
       const { id, img, account, name } = this.$store.state.user.info;
       console.log(id);

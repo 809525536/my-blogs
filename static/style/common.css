@@ -1,12 +1,22 @@
-html,body {
+html,
+body {
   height: 100%;
   background: #f4f5f5;
 }
-#__nuxt,#__layout,#__layout>div,.home-container {
+
+#__nuxt,
+#__layout,
+#__layout>div,
+.home-container {
   height: 100%;
 }
+
 * {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+img {
+  width: 100%;
 }
