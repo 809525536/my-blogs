@@ -3,7 +3,16 @@ export const state = () => ({
 })
 
 export const mutations = {
-  userInfo (state, info) {
+  userInfo(state, info) {
     state.info = info
+  }
+}
+
+export const actions = {
+  setUserInfo({
+    state,
+    commit
+  }, val) {
+    commit('userInfo', val)
   }
 }

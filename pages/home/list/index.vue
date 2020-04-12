@@ -77,6 +77,8 @@
 
 <style lang="less" scoped>
   .essay-list {
+    background: #fff;
+
     li {
       border-bottom: 1px solid #ccc;
       padding: 20px;
